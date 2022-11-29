@@ -32,4 +32,4 @@ clean:
 fclean:		clean
 			$(RM) $(NAME)
 
-re:			Fclean $(NAME)
+re:			fclean $(NAME)

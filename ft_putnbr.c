@@ -11,15 +11,18 @@
 /* ************************************************************************** */
 #include    "ft_printf.h"
 
-int	nbrlen(long long nbr)
+int	nbrlen(int nbr)
 {
 	int		count;
 
 	count = 0;
 	if (nbr == 0)
 		count = 1;
-	if (nbr <= 0)
+	if (nbr < 0)
+	{
 		nbr *= -1;
+		count = 1;
+	}
 	while (nbr != 0)
 	{
 		nbr /= 10;
@@ -28,31 +31,24 @@ int	nbrlen(long long nbr)
 	return (count);
 }
 
-int	ft_putnbr(long int nbr)
+int	ft_putnbr(int nbr)
 {
 	if (nbr == -2147483648)
 	{
-		ft_putchar('-');
-		ft_putchar('2');
-		ft_putnbr(147483648);
-	}
-	else if (nbr == 2147483647)
-	{
-		ft_putchar('2');
-		ft_putnbr(147483647);
+		write (1, "-2147483648", 11);
+		return (11);
 	}
 	if (nbr < 0)
 	{
-		nbr = -nbr;
 		ft_putchar('-');
+		ft_putnbr(-1 * nbr);
 	}
 	if (nbr > 9)
 	{
 		ft_putnbr(nbr / 10);
 		ft_putnbr(nbr % 10);
 	}
-	else
+	else if (nbr >= 0 && nbr <= 9)
 		ft_putchar(nbr + 48);
 	return (nbrlen(nbr));
 }
-
