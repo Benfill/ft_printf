@@ -17,17 +17,11 @@ int	ft_putstr(char *str)
 
 	i = 0;
 	if (!str)
-	{
-		ft_putstr("(null)");
-		return (6);
-	}
+		return (ft_putstr("(null)"));
 	else if (str)
 	{
 		while (str[i])
-		{
-			write (1, &str[i], 1);
-			i++;
-		}
+			write (1, &str[i++], 1);
 	}
 	return (i);
 }

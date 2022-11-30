@@ -47,8 +47,7 @@ int	ft_putadress(unsigned long i)
 {
 	int	len;
 
-	len = 0;
-	len += ft_putstr("0x");
+	len = ft_putstr("0x");
 	len += ft_print_adhex(i);
 	return (len);
 }

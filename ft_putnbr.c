@@ -16,9 +16,7 @@ int	nbrlen(int nbr)
 	int		count;
 
 	count = 0;
-	if (nbr == 0)
-		count = 1;
-	if (nbr < 0)
+	if (nbr <= 0)
 	{
 		nbr *= -1;
 		count = 1;
